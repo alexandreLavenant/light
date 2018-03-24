@@ -5,10 +5,10 @@ const 	config = require('config'),
 		lifx = require('lifx'),
 		// Dash button Setup
 		dash = dashButton(config.get('dash.mac'), null, null, 'all'),
-		lx = lifx.init(),
-		lightState = false
+		lx = lifx.init()
 		;
 
+let		lightState = false;
 
 // Dash Button
 dash.on("detected", () =>
