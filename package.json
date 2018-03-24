@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "config": "^1.29.4",
-    "lifx": "^0.3.1"
+    "lifx": "^0.3.1",
+    "node-dash-button": "^0.6.1"
   }
 }

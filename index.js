@@ -1,14 +1,14 @@
 'use strict';
 
-import config from 'config';
-import dashButton from 'node-dash-button';
-import lifx from 'lifx';
-// Dash button Setup
-const	dash = dashButton(config.get('dash.mac'), null, null, 'all'),
-		lx = lifx.init()
+const 	config = require('config'),
+		dashButton = require('node-dash-button'),
+		lifx = require('lifx'),
+		// Dash button Setup
+		dash = dashButton(config.get('dash.mac'), null, null, 'all'),
+		lx = lifx.init(),
+		lightState = false
 		;
 
-let lightState = false; 
 
 // Dash Button
 dash.on("detected", () =>
@@ -22,6 +22,7 @@ dash.on("detected", () =>
 		lx.lightsOn();
 		lightState = true;
 	}
+	console.log('Switch Button to: ' + (lightState ? 'on' : 'off'));	
 });
 
 console.log('Light Ready');
