@@ -1,28 +1,30 @@
 'use strict';
 
-const 	config = require('config'),
-		dashButton = require('node-dash-button'),
-		lifx = require('lifx'),
-		// Dash button Setup
-		dash = dashButton(config.get('dash.mac'), null, null, 'all'),
-		lx = lifx.init()
+const 	config		= require('config'),
+		// Dash Button Setup
+		dashButton	= require('node-dash-button'),
+		dash		= dashButton(config.get('dash.mac'), null, null, 'all'),
+		// Light Setup
+		LifxClient	= require('node-lifx').Client,
+		lifx		= new LifxClient(),
+		lifxIp 		= config.get('light.ip')
 		;
-
-let		lightState = false;
+		
+lifx.init({
+	lights : [lifxIp]
+});
 
 // Dash Button
 dash.on("detected", () =>
 {
-	console.log('Switch Button : pressed');
-
-	if (lightState) {
-		lx.lightsOff();
-		lightState = false;
-	} else {
-		lx.lightsOn();
-		lightState = true;
-	}
-	console.log('Switch Button to: ' + (lightState ? 'on' : 'off'));	
+	lifx.light(lifxIp).getPower((err, lightState) => {
+		if (lightState) {
+			lifx.light(lifxIp).off();
+		} else {
+			lifx.light(lifxIp).on();
+		}
+		console.log('Switch Button to: ' + (!lightState ? 'on' : 'off'));	
+	});
 });
 
 console.log('Light Ready');
