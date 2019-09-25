@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.29.4",
-    "node-dash-button": "^0.6.1",
+    "config": "^3.2.0",
+    "dash-button": "^3.2.0",
     "node-lifx": "^0.8.0"
   }
 }
