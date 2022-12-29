@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.29.4",
+    "config": "^3.3.8",
     "node-dash-button": "^0.6.1",
     "node-lifx": "^0.8.0"
   }
